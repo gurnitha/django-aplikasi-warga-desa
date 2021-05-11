@@ -1,7 +1,7 @@
 from django.db import models
-from app.desa.models import NamaDesa
-from app.rt.models import NamaRt
-from app.rw.models import NamaRw 
+from app.desa.models import Desa
+from app.rw.models import RukunWarga
+from app.rt.models import RukunTetangga 
 # from django_countries.fields import CountryField
 
 # Create your models here.
@@ -51,13 +51,13 @@ class WNA(models.Model):
 	"""ALAMAT TINGGAL WNA"""
 	alamat_tinggal  = models.CharField(max_length=100)
 	desa = models.ForeignKey(
-						NamaDesa, on_delete=models.CASCADE,
+						Desa, on_delete=models.CASCADE,
 						help_text='Klik tanda panah')
 	rw = models.ForeignKey(
-						NamaRw, on_delete=models.CASCADE,
+						RukunWarga, on_delete=models.CASCADE,
 						help_text='Klik tanda panah')
 	rt = models.ForeignKey(
-						NamaRt, on_delete=models.CASCADE,
+						RukunTetangga, on_delete=models.CASCADE,
 						help_text='Klik tanda panah')
 	catatan = models.TextField(blank=True)
 

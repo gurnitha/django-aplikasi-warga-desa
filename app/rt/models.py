@@ -4,16 +4,16 @@ from django.db import models
 
 # Create your models here.
 
-class NamaRt(models.Model):
+class RukunTetangga(models.Model):
 
-	nama_rt 		= models.CharField(max_length=50)
-	nama_ketua_rt 	= models.CharField(max_length=50)
-	alamat_rt 		= models.CharField(max_length=100, null=True)
-	hp_ketua_rt 	= models.CharField(max_length=20, null=True)
+	rt 		= models.CharField(max_length=50)
+	ketua 	= models.CharField(max_length=50)
+	alamat 	= models.CharField(max_length=100)
+	hp 		= models.CharField(max_length=20)
 
 	class Meta:
-		verbose_name = "Nama rt"
-		verbose_name_plural = "Nama rt"
+		verbose_name = "RT"
+		verbose_name_plural = "RT"
 
 	def __str__(self):
-		return self.nama_rt
+		return self.rt
