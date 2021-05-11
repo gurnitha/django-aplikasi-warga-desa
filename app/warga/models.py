@@ -28,7 +28,7 @@ class Warga(models.Model):
 
 	gender_pilihan = [
 		(LAKI_LAKI, 'Laki'),
-		(PEREMPUAN, 'Perem')
+		(PEREMPUAN, 'Perempuan')
 	]
 
 	# PENDIDIKAN
@@ -248,6 +248,7 @@ class Warga(models.Model):
 	SEMBILAN_ORANG 	= '9 Orang'
 	SEPULUH_ORANG 	= '10 Orang'
 	LEBIH_DARI_SEPULUH_ORANG = 'Lebih Dari 10 Orang'
+	TIDAK_ADA 		= 'Tidak ada'
 
 	jumlah_angota_keluarga_pilihan = [
 		(SATU_ORANG 		, '1 orang'),
@@ -260,7 +261,8 @@ class Warga(models.Model):
 		(DELAPAN_ORANG 	, '8 orang'),
 		(SEMBILAN_ORANG 	, '9 orang'),
 		(SEPULUH_ORANG 	, '10 orang'),
-		(LEBIH_DARI_SEPULUH_ORANG , 'Lebih Dari 10 orang')
+		(LEBIH_DARI_SEPULUH_ORANG , 'Lebih Dari 10 orang'),
+		(TIDAK_ADA, 'Tidak ada')
 	]	
 
 	## 4. Jenis rumah tempat tinggal
@@ -298,16 +300,16 @@ class Warga(models.Model):
 	"""IDENTITAS UTAMA WARGA"""
 	nama_lengkap   	= models.CharField(
 						max_length=100,
-						help_text='Boleh dikosongkan.')
+						help_text='Harus diisi.')
 	nama_panggilan 	= models.CharField(
 						max_length=30,
-						help_text='Boleh dikosongkan.')
+						help_text='Harus diisi.')
 	nik            	= models.CharField(
 						max_length=20,
-						help_text='Boleh dikosongkan.')
+						help_text='Harus diisi.')
 	hp            	= models.CharField(
 						max_length=20, 
-						null=True,
+						blank=True,
 						help_text='Boleh dikosongkan.')
 
 	
@@ -333,11 +335,11 @@ class Warga(models.Model):
 						help_text='Klik tanda panah.')
 	tempat_lahir   	= models.CharField(
 						max_length=50, 
-						null=True,
+						blank=True,
 						help_text='Contoh: Denpasar, Bali atau Boleh dikosongkan.')
 	tanggal_lahir   = models.CharField(
 						max_length=12, 
-						null=True,
+						blank=True,
 						help_text='Contoh: 01/01/2001 atau Boleh dikosongkan.')
 	agama          	= models.CharField(
 						max_length=10,
@@ -361,11 +363,11 @@ class Warga(models.Model):
 						help_text='Klik tanda panah.')
 	nama_ibu 		= models.CharField(
 						max_length=50, 
-						null=True,
+						blank=True,
 						help_text='Boleh dikosongkan.')
 	nama_ayah 		= models.CharField(
 						max_length=50, 
-						null=True,
+						blank=True,
 						help_text='Boleh dikosongkan.')
 
 
@@ -392,11 +394,11 @@ class Warga(models.Model):
 							help_text='Klik tanda panah.')
 	waktu_terpapar 		= models.CharField(
 							max_length=30,
-							help_text='Contoh: 01/05/2021')
+							help_text='Terpapar tulis mis: 01/05/2021, Tdk terpapar tulis: -')
 	gejala_saat_terpapar= models.TextField(
-							null=True,
+							blank=True,
 							help_text='Boleh dikosongkan.')
-	status = models.CharField(
+	status_perawatan = models.CharField(
 							max_length=30,
 							choices=kondisi_kesehatan_setelah_terpapar_pilihan,
 							help_text='Klik tanda panah.')
